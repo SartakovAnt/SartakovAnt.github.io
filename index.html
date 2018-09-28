@@ -1,18 +1,47 @@
 <!DOCTYPE html>
 <html>
-<body>
+<head>
+<style>
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+</style>
 
 <script>
 function playAudio() {
 	audio = new Audio('https://www.sample-videos.com/audio/mp3/crowd-cheering.mp3');
+	audio.addEventListener('playing',() => {
+		document.getElementById("btn_audio").value="Playing";
+		window.location.replace("airkast://stream/pause");  
+	});
+	
+	audio.addEventListener('ended',() => {
+		document.getElementById("btn_audio").value = "Stopped";
+		window.location.replace("airkast://stream/play");  
+	});
+	
+	document.getElementById("btn_audio").value = "Loading";
 	audio.play();
-	window.location.replace("airkast://stream/pause");
 }
 </script>
+</head>
 
-<h2>Hello </h2>
-<p>Tap button to play</p>
-<button id="btn" type="button" onclick="playAudio()">Click Me!</button>
+<body>
 
+<h2 align="center">Hello</h2>
+<p align="center">Tap button to play</p>
+<div style="text-align: center">
+	<input class="button" id="btn_audio" type="button" onclick="playAudio()" value="Stopped"></input>
+</div>
 </body>
+
 </html>
