@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<script>
+function playAudio() {
+	audio = new Audio('https://www.sample-videos.com/audio/mp3/crowd-cheering.mp3');
+	audio.play();
+	window.location.replace("airkast://stream/pause");
+}
+</script>
+
+<h2>Hello </h2>
+<p>Tap button to play</p>
+<button id="btn" type="button" onclick="playAudio()">Click Me!</button>
+
+</body>
+</html>
